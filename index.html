@@ -34,7 +34,7 @@
       fetch("content/guide.json")
         .then((response) => {
           if (!response.ok) throw new Error("content unavailable");
-          return response.text();
+          return response.json();
         })
         .then((data) => { document.getElementById("guide-content").innerHTML = `<section class="intro-card"><p class="eyebrow">使用原則</p><h2>${escape(data.introTitle)}</h2><p>${escape(data.introText)}</p></section><section class="platforms">${data.platforms.map(renderPlatform).join("")}</section>`; })
         .catch(() => {
