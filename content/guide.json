@@ -20,20 +20,35 @@
       }
     },
     {
-      "name": "Hahow",
-      "label": "HAHOW",
-      "description": "在已購課程頁查看附件與教材；如需離線觀看，使用 Hahow 官方 App 提供的功能。",
-      "url": "https://hahow.in/",
-      "linkLabel": "前往 Hahow 官方網站",
-      "steps": []
-    },
-    {
       "name": "知識衛星",
       "label": "KNOWLEDGE SATELLITE",
-      "description": "從已購課程頁或官方 App 確認可下載的教材、字幕與離線觀看選項。",
+      "description": "知識衛星課程下載教學",
       "url": "https://sat.knowhow.com.tw/",
       "linkLabel": "前往知識衛星官方網站",
-      "steps": []
+      "steps": [
+        "安裝擴充功能：到 Chrome 線上應用程式商店，安裝「Stream Recorder - HLS Downloader」擴充功能。",
+        "下載影片與字幕：打開知識衛星的課程頁面。\n點擊擴充功能的圖示，擴充功能會開始處理當前播放的課程影片（例如播放 1-1 就會處理 1-1 的影片）。\n等待進度條完成：擴充功能會顯示一條進度條，請等待進度條跑完，處理完成後才能點擊「下載影片」或「下載字幕」。\n如果影片包含字幕，擴充功能會顯示「字幕」選項，進度條完成後即可點擊下載字幕。",
+        "完整下載課程內容：\n在課程頁面中，依序點擊每一節課程（例如 1-1、1-2 等），擴充功能會自動接續處理並下載每一節的影片與字幕，無需重新啟動擴充功能。\n確保課程頁面持續開啟，讓擴充功能順利完成處理與下載。",
+        "檔名修改：在下載時，系統會提示選擇存檔位置，可以直接修改檔名。\n如果不確定是哪一集，可以在課程頁面的左側影片列表中查看對應的集數，然後進行命名。"
+      ],
+      "download": {
+        "url": "https://chromewebstore.google.com/detail/stream-recorder-hls-m3u8/iogidnfllpdhagebkblkgbfijkbkjdmm",
+        "label": "Stream Recorder - HLS Downloader"
+      }
+    },
+    {
+      "name": "Hahow",
+      "label": "HAHOW",
+      "description": "Hahow 平台影片與字幕下載教學",
+      "url": "https://hahow.in/",
+      "linkLabel": "前往 Hahow 官方網站",
+      "steps": [
+        "安裝擴充功能\n安裝以下任一 Chrome 擴充功能，用於下載 Hahow 平台的影片：\nVideo Downloader Mpmux\nFetchV Video Downloader"
+      ],
+      "download": {
+        "url": "https://chromewebstore.google.com/detail/video-downloader-mpmux/mbflpfaamifmmmkdjkcmpofpccfmlmap",
+        "label": "Video Downloader Mpmux"
+      }
     },
     {
       "name": "師父",
