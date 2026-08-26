@@ -1,0 +1,47 @@
+{
+  "introTitle": "只整理自己的已購課程與獲授權教材",
+  "introText": "各平台可用的離線、教材與字幕功能，會依課程、訂閱與授權而不同。請以課程頁和官方 App 顯示的選項為準。",
+  "platforms": [
+    {
+      "name": "PressPlay",
+      "label": "PRESSPLAY ACADEMY",
+      "description": "使用 PPA 逐字稿匯出器，從你已登入且本來就可觀看的課程單元收集字幕，並下載成 VTT 或 ZIP。",
+      "url": "https://www.pressplay.cc/",
+      "linkLabel": "前往 PressPlay 官方網站",
+      "steps": [
+        "安裝擴充功能：解壓 ZIP，在 Chrome 開啟 chrome://extensions，打開「開發人員模式」，按「載入未封裝項目」，選取解壓後的 ppa-transcript-exporter 資料夾。",
+        "開啟右側面板：進入任一 PressPlay 課程單元頁，點工具列的 PPA 圖示。右側面板會顯示偵測到的課程與單元清單。",
+        "收集字幕：按「收集偵測到的字幕」。每個單元會顯示待收集、收集中、完成、找不到字幕或略過。",
+        "下載 VTT 或 ZIP：完成後可逐檔下載 VTT，或選擇「下載已收集字幕 ZIP」一次取得全部字幕。"
+      ],
+      "download": {
+        "url": "downloads/ppa-transcript-exporter-latest.zip",
+        "label": "下載最新擴充功能 ZIP"
+      }
+    },
+    {
+      "name": "Hahow",
+      "label": "HAHOW",
+      "description": "在已購課程頁查看附件與教材；如需離線觀看，使用 Hahow 官方 App 提供的功能。",
+      "url": "https://hahow.in/",
+      "linkLabel": "前往 Hahow 官方網站",
+      "steps": []
+    },
+    {
+      "name": "知識衛星",
+      "label": "KNOWLEDGE SATELLITE",
+      "description": "從已購課程頁或官方 App 確認可下載的教材、字幕與離線觀看選項。",
+      "url": "https://sat.knowhow.com.tw/",
+      "linkLabel": "前往知識衛星官方網站",
+      "steps": []
+    },
+    {
+      "name": "師父",
+      "label": "SHIFU",
+      "description": "依課程頁與官方 App 所列的下載、離線或教材功能操作；找不到時請向課程客服確認授權。",
+      "url": "https://shifu.shop/",
+      "linkLabel": "前往師父官方網站",
+      "steps": []
+    }
+  ]
+}

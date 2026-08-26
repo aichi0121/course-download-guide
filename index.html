@@ -6,11 +6,12 @@
     <meta name="description" content="可由 GitHub 更新的個人課程資源指南。" />
     <title>課程資源指南</title>
     <link rel="stylesheet" href="assets/styles.css" />
+    <link rel="stylesheet" href="assets/public-extra.css" />
   </head>
   <body>
     <header class="site-header">
       <a class="brand" href="#top">課程資源指南</a>
-      <a class="edit-link" href="https://github.com/aichi0121/course-download-guide/edit/main/content/guide.html" target="_blank" rel="noreferrer">在 GitHub 編輯內容 ↗</a>
+      <span class="header-note">影片與字幕整理指南</span>
     </header>
     <main id="top">
       <section class="hero">
@@ -22,14 +23,20 @@
         <p class="loading">正在載入指南…</p>
       </section>
     </main>
-    <footer>課程資源指南 · 內容由 GitHub 版控</footer>
+    <footer>課程資源指南</footer>
     <script>
-      fetch("content/guide.html")
+      const escape = (value) => String(value).replace(/[&<>"']/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[char]));
+      const renderPlatform = (platform) => {
+        const download = platform.download ? `<div class="actions"><a class="primary" href="${escape(platform.download.url)}" download>${escape(platform.download.label)}</a></div>` : "";
+        const steps = platform.steps?.length ? `<ol>${platform.steps.map(step => `<li>${escape(step)}</li>`).join("")}</ol>` : "";
+        return `<article class="platform-card"><p class="eyebrow">${escape(platform.label)}</p><h2>${escape(platform.name)}</h2><p>${escape(platform.description)}</p>${download}${steps}<a href="${escape(platform.url)}" target="_blank" rel="noreferrer">${escape(platform.linkLabel)} →</a></article>`;
+      };
+      fetch("content/guide.json")
         .then((response) => {
           if (!response.ok) throw new Error("content unavailable");
           return response.text();
         })
-        .then((html) => { document.getElementById("guide-content").innerHTML = html; })
+        .then((data) => { document.getElementById("guide-content").innerHTML = `<section class="intro-card"><p class="eyebrow">使用原則</p><h2>${escape(data.introTitle)}</h2><p>${escape(data.introText)}</p></section><section class="platforms">${data.platforms.map(renderPlatform).join("")}</section>`; })
         .catch(() => {
           document.getElementById("guide-content").innerHTML = '<p class="loading">內容暫時無法載入。請到 GitHub 查看原稿。</p>';
         });
