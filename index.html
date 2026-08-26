@@ -17,7 +17,6 @@
       <section class="hero">
         <p>PERSONAL COURSE LIBRARY</p>
         <h1>課程內容，<br />有條理地整理。</h1>
-        <span>這是獨立網站，不會回到 Project Hub。</span>
       </section>
       <section id="guide-content" class="guide-content" aria-live="polite">
         <p class="loading">正在載入指南…</p>
@@ -27,7 +26,8 @@
     <script>
       const escape = (value) => String(value).replace(/[&<>"']/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[char]));
       const renderPlatform = (platform) => {
-        const download = platform.download ? `<div class="actions"><a class="primary" href="${escape(platform.download.url)}" download>${escape(platform.download.label)}</a></div>` : "";
+        const links = platform.links || (platform.download ? [platform.download] : []);
+        const download = links.length ? `<div class="actions">${links.map(link => `<a class="primary" href="${escape(link.url)}" download>${escape(link.label)}</a>`).join("")}</div>` : "";
         const steps = platform.steps?.length ? `<ol>${platform.steps.map(step => `<li>${escape(step)}</li>`).join("")}</ol>` : "";
         return `<article class="platform-card"><p class="eyebrow">${escape(platform.label)}</p><h2>${escape(platform.name)}</h2><p>${escape(platform.description)}</p>${download}${steps}<a href="${escape(platform.url)}" target="_blank" rel="noreferrer">${escape(platform.linkLabel)} →</a></article>`;
       };

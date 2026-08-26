@@ -2,6 +2,7 @@ const contentPath = "content/guide.json";
 const platforms = document.getElementById("platforms");
 const platformTemplate = document.getElementById("platform-template");
 const stepTemplate = document.getElementById("step-template");
+const linkTemplate = document.getElementById("link-template");
 const status = document.getElementById("status");
 let sourceSha = "";
 
@@ -12,16 +13,25 @@ function addStep(container, value = "") {
   row.querySelector("button").addEventListener("click", () => row.remove());
   container.appendChild(step);
 }
+function addLink(container, link = { label: "", url: "" }) {
+  const item = linkTemplate.content.cloneNode(true);
+  const row = item.querySelector(".link-row"); const inputs = row.querySelectorAll("input");
+  inputs[0].value = link.label || ""; inputs[1].value = link.url || "";
+  row.querySelector("button").addEventListener("click", () => row.remove());
+  container.appendChild(item);
+}
 
 function addPlatform(platform = { name: "", label: "", description: "", url: "", linkLabel: "", steps: [] }) {
   const item = platformTemplate.content.cloneNode(true);
   const card = item.querySelector(".platform");
   const set = (field, value = "") => { const input = card.querySelector(`[data-field="${field}"]`); input.value = value; };
   set("name", platform.name); set("label", platform.label); set("description", platform.description); set("url", platform.url); set("linkLabel", platform.linkLabel);
-  set("download.url", platform.download?.url || ""); set("download.label", platform.download?.label || "");
+  const linkList = card.querySelector(".link-list");
+  (platform.links || (platform.download ? [platform.download] : [])).forEach(link => addLink(linkList, link));
   const list = card.querySelector(".step-list");
   (platform.steps || []).forEach(value => addStep(list, value));
   card.querySelector(".add-step").addEventListener("click", () => addStep(list));
+  card.querySelector(".add-link").addEventListener("click", () => addLink(linkList));
   card.querySelector(".remove").addEventListener("click", () => card.remove());
   platforms.appendChild(item);
 }
@@ -32,8 +42,8 @@ function collect() {
     introText: document.querySelector('[name="introText"]').value.trim(),
     platforms: [...platforms.querySelectorAll(".platform")].map(card => {
       const value = field => card.querySelector(`[data-field="${field}"]`).value.trim();
-      const downloadUrl = value("download.url"); const downloadLabel = value("download.label");
-      return { name: value("name"), label: value("label"), description: value("description"), url: value("url"), linkLabel: value("linkLabel"), steps: [...card.querySelectorAll(".step textarea")].map(input => input.value.trim()).filter(Boolean), ...(downloadUrl && downloadLabel ? { download: { url: downloadUrl, label: downloadLabel } } : {}) };
+      const links = [...card.querySelectorAll(".link-row")].map(row => { const inputs = row.querySelectorAll("input"); return { label: inputs[0].value.trim(), url: inputs[1].value.trim() }; }).filter(link => link.label && link.url);
+      return { name: value("name"), label: value("label"), description: value("description"), url: value("url"), linkLabel: value("linkLabel"), steps: [...card.querySelectorAll(".step textarea")].map(input => input.value.trim()).filter(Boolean), ...(links.length ? { links } : {}) };
     })
   };
 }

@@ -6,6 +6,7 @@
     <meta name="robots" content="noindex,nofollow" />
     <title>課程資源指南｜管理</title>
     <link rel="stylesheet" href="assets/admin.css" />
+    <link rel="stylesheet" href="assets/admin-extra.css" />
   </head>
   <body>
     <main class="admin-shell">
@@ -24,11 +25,12 @@
         <div class="two"><label>平台名稱<input data-field="name" required /></label><label>小標籤<input data-field="label" required /></label></div>
         <label>說明文字<textarea data-field="description" rows="3" required></textarea></label>
         <div class="two"><label>連結網址<input data-field="url" type="url" required /></label><label>連結文字<input data-field="linkLabel" required /></label></div>
-        <details><summary>下載按鈕（選填）</summary><div class="two"><label>下載網址<input data-field="download.url" /></label><label>按鈕文字<input data-field="download.label" /></label></div></details>
+        <div class="links"><div class="steps-head"><h3>下載與其他連結</h3><button type="button" class="add-link">＋ 新增連結</button></div><div class="link-list"></div></div>
         <div class="steps"><div class="steps-head"><h3>步驟</h3><button type="button" class="add-step">＋ 新增步驟</button></div><div class="step-list"></div></div>
       </section>
     </template>
     <template id="step-template"><div class="step"><textarea rows="2" placeholder="輸入一個步驟"></textarea><button type="button" aria-label="移除步驟">×</button></div></template>
+    <template id="link-template"><div class="link-row"><input placeholder="按鈕文字，例如：下載 ZIP" /><input type="url" placeholder="https://…" /><button type="button" aria-label="移除連結">×</button></div></template>
     <script src="assets/admin.js"></script>
   </body>
 </html>

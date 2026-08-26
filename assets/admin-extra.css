@@ -1,0 +1,1 @@
+.links{margin-top:18px;padding-top:16px;border-top:1px solid #ebeae4}.link-list{display:grid;gap:8px;margin-top:12px}.link-row{display:grid;grid-template-columns:1fr 1.4fr 34px;gap:8px}.link-row button{border:0;border-radius:9px;background:#f7e9e6;color:#a45343;font-size:20px;cursor:pointer}@media(max-width:600px){.link-row{grid-template-columns:1fr 1fr 34px}}
